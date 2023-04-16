@@ -28,7 +28,7 @@ class MainWindow(QWidget):
         self._create_subjects_tab()
 
     def _connect_to_db(self):
-        self.conn = psycopg2.connect(database="timetable",
+        self.conn = psycopg2.connect(database="timetab2",
                                      user="postgres",
                                      password="2104",
                                      host="localhost",
@@ -132,7 +132,7 @@ class MainWindow(QWidget):
             self.cursor.execute(f"DELETE from timetable where id = '{row[0]}'")
             self.conn.commit()
         except:
-            QMessageBox.about(self, "Error", "Enter all fields")
+            QMessageBox.about(self, "Error", "deletion is not possible")
 
     def _update_db(self, num):
         row = list()
@@ -331,7 +331,7 @@ class MainWindow(QWidget):
             self.cursor.execute(f"DELETE from subject where id = '{row[0]}'")
             self.conn.commit()
         except:
-            QMessageBox.about(self, "Error", "Enter all fields")
+            QMessageBox.about(self, "Error", "The row is linked to the Teachers table")
 
     def _add_to_sub_db(self, num):
         row = list()
